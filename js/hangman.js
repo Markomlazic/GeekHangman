@@ -1,5 +1,4 @@
 function hangmanGame(words) {
-  // Set the game up
   // Select a random word from words array and set it to lower case
   var word = words[Math.floor(Math.random() * words.length)];
   var wordLowerCase = word.toLowerCase().replace(/\s+/g, "");
@@ -16,7 +15,7 @@ function hangmanGame(words) {
   var hangmanPhoto = document.getElementsByClassName("hangman-photo")[0];
 
   // Select the div with incorrect guesses
-  // Create a string with all the missed and guessed letters
+  // Create a string with all the missed and guessed letters and set ups a counter
   var incorrectLetters = document.getElementById("incorrect-letters");
   var missedLetters = "";
   var guessedLetter = "";
@@ -64,16 +63,20 @@ function hangmanGame(words) {
   // Check if the player reached the number of allowed misses
   function endGame(count, word) {
     if (count === 6) {
-      alert(`Game Over! You lost! The word was: ${word}`);
-      setUp();
+      setTimeout(() => {
+        alert(`Game Over! You lost! The word was: ${word}`);
+        setUp();
+      }, 100);
     }
   }
 
   // Check if the player guessed the word
   function gameWon(word, guess) {
     if (word.toLowerCase() === guess.toLowerCase()) {
-      alert(`Great! You Won! The word was ${word}`);
-      setUp();
+      setTimeout(() => {
+        alert(`Great! You Won! The word was ${word}`);
+        setUp();
+      }, 100);
     }
   }
 
